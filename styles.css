@@ -1,0 +1,273 @@
+:root {
+    --mc-bg: #0b1720;
+    --mc-text: #D3D4D3;
+    --mc-gradient-top: #878C87;
+    --mc-gradient-bottom: #D3D4D3;
+
+    --mc-green-pale: #d9ead3;
+    --mc-green-light: #93c47d;
+    --mc-green-mid: #6aa84f;
+    --mc-green-dark: #38761d;
+    --mc-green-deep: #274e13;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--mc-bg);
+    color: var(--mc-text);
+}
+
+.mc-loading {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at top left, var(--mc-green-dark) 0, var(--mc-bg) 45%),
+        radial-gradient(circle at bottom right, var(--mc-green-deep) 0, var(--mc-bg) 40%);
+}
+
+.mc-tint {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: transparent;
+    mix-blend-mode: soft-light;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.mc-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    max-width: 350px;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 2rem;
+    background: linear-gradient(180deg, rgba(83, 85, 87, 0.5) 0%, rgba(45, 45, 45, 0.8) 100%);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3), inset 0px 2px 1px rgba(255, 255, 255, 0.3), inset 0px -2px 1px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    z-index: 2;
+    opacity: 0.85;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.mc-gradient {
+    background: linear-gradient(180deg,
+        var(--mc-gradient-top) 0%,
+        var(--mc-gradient-bottom) 100%);
+    background-clip: text;
+    color: transparent;
+}
+
+.mc-title {
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+}
+
+.mc-subtitle {
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.mc-copy {
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.1rem;
+}
+
+.mc-logo {
+    flex-shrink: 0;
+    margin-left: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mc-logo svg {
+    display: block;
+    height: 5rem;
+    width: auto;
+    max-width: 100%;
+}
+
+.mc-blur {
+    position: absolute;
+    border-radius: 50rem;
+    filter: blur(1rem);
+    opacity: 0.6;
+    pointer-events: none;
+    transition:
+        filter 1s ease,
+        opacity 1s ease;
+    will-change: transform;
+}
+
+.mc-blur.mc-flicker {
+    filter: blur(0.8rem) brightness(1.4) saturate(1.1);
+    opacity: 0.9;
+}
+
+.mc-blob-1 {
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle at 30% 30%, var(--mc-green-pale), var(--mc-green-light));
+    top: -60px;
+    left: -40px;
+    animation: floatBlob1 22s ease-in-out infinite alternate;
+}
+
+.mc-blob-2 {
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle at 20% 20%, var(--mc-green-light), var(--mc-green-mid));
+    bottom: -80px;
+    right: -50px;
+    animation: floatBlob2 26s ease-in-out infinite alternate;
+}
+
+.mc-blob-3 {
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle at 40% 40%, var(--mc-green-dark), var(--mc-green-deep));
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    animation: floatBlob3 30s ease-in-out infinite alternate;
+}
+
+/* Ambient motes (soft glowing dust / spores) */
+.mc-mote {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow:
+        0 0 4px rgba(255, 255, 255, 0.7),
+        0 0 10px rgba(180, 255, 230, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+    animation-name: moteFloat;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moteFloat {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 10px, 0) scale(0.7);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(-10px, -55px, 0) scale(0.9);
+    }
+}
+
+@keyframes floatBlob1 {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(50px, 70px, 0);
+    }
+}
+
+@keyframes floatBlob2 {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-55px, -35px, 0);
+    }
+}
+
+@keyframes floatBlob3 {
+    from {
+        transform: translate3d(-50%, -50%, 0) scale(1);
+    }
+
+    to {
+        transform: translate3d(-48%, -55%, 0) scale(1.08);
+    }
+}
+
+.mc-bloom {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: radial-gradient(circle,
+            rgba(200, 255, 220, 0.85) 0%,
+            rgba(200, 255, 220, 0.0) 70%);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.6);
+    will-change: transform, opacity;
+
+    animation: bloom 1900ms ease-out forwards;
+}
+
+@keyframes bloom {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.4);
+    }
+
+    25% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+
+@media (max-width: 600px) {
+    .mc-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mc-logo {
+        margin-left: 0;
+        margin-top: 1.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .mc-blur,
+    .mc-mote,
+    .mc-bloom {
+        animation: none !important;
+    }
+}
