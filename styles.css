@@ -230,8 +230,8 @@ body {
     pointer-events: none;
     transform: translate(-50%, -50%) scale(0.6);
     will-change: transform, opacity;
-
     animation: bloom 1900ms ease-out forwards;
+    z-index: 2;
 }
 
 @keyframes bloom {
