@@ -49,10 +49,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    gap: 1.5rem;
     position: relative;
-    max-width: 350px;
+    max-width: 650px;
     width: 100%;
-    padding: 2rem;
+    padding: 3rem;
     border-radius: 2rem;
     background: linear-gradient(180deg, rgba(83, 85, 87, 0.5) 0%, rgba(45, 45, 45, 0.8) 100%);
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3), inset 0px 2px 1px rgba(255, 255, 255, 0.3), inset 0px -2px 1px rgba(0, 0, 0, 0.4);
@@ -77,16 +78,20 @@ body {
     letter-spacing: 0.1rem;
 }
 
-.mc-subtitle {
-    font-size: 1rem;
-    letter-spacing: 0.2rem;
-    margin-bottom: 1rem;
+.mc-hr {
+    margin: 1rem 0;
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .mc-copy {
     font-size: 1rem;
     line-height: 1.5;
     letter-spacing: 0.1rem;
+    margin-bottom: 1rem;
+    text-align: left;
 }
 
 .mc-logo {
@@ -99,7 +104,7 @@ body {
 
 .mc-logo svg {
     display: block;
-    height: 5rem;
+    height: 8rem;
     width: auto;
     max-width: 100%;
 }
@@ -255,6 +260,7 @@ body {
     .mc-card {
         flex-direction: column;
         text-align: center;
+        gap: 0;
     }
 
     .mc-logo {
